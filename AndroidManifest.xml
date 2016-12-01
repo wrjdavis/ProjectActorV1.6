@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tedrasoft.templategoogle"
+    android:versionCode="7"
+    android:versionName="1.6" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- VERY IMPORTANT! Don't forget this permission, or in-app billing won't work. -->
+    <uses-permission android:name="com.android.vending.BILLING" />
+       
+
+
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+
+<uses-permission android:name="android.permission.VIBRATE" />
+<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+ 
+<!--
+  IMPORTANT: Change "com.parse.tutorials.pushnotifications.permission.C2D_MESSAGE" in the lines below
+  to match your app's package name + ".permission.C2D_MESSAGE".
+-->
+<permission android:protectionLevel="signature"
+    android:name="com.tedrasoft.templategoogle.permission.C2D_MESSAGE" />
+<uses-permission android:name="com.tedrasoft.templategoogle.permission.C2D_MESSAGE" />
+    <application
+        android:name="com.tedrasoft.templategoogle.Application"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        >
+
+    
+        <activity
+            android:name="com.tedrasoft.templategoogle.MainActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+           android:noHistory="false"
+           
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tedrasoft.templategoogle.SceneActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_scene"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="com.tedrasoft.templategoogle.OptionsActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_options"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppDialogTheme" >
+        </activity>
+        <activity
+            android:name="com.tedrasoft.templategoogle.Language"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_language"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppDialogTheme" >
+        </activity>
+        <activity
+            android:name="com.tedrasoft.templategoogle.SuccessActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_success"
+            android:noHistory="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppDialogTheme" >
+        </activity>
+       
+        <activity
+            android:name="com.tedrasoft.templategoogle.HintActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_hint"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/applicationId" />
+        
+
+        <activity
+            android:name="com.tedrasoft.templategoogle.InAppActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_in_app"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+    	<activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+		<receiver android:name="com.tedrasoft.templategoogle.Rescheduler" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.tedrasoft.templategoogle.AlarmReceiver" >
+        </receiver>
+
+        <activity
+            android:name="com.tedrasoft.templategoogle.AchievementActivity"
+            android:label="@string/title_activity_achievement" 
+            android:configChanges="orientation"
+                        android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppDialogTheme">
+        </activity>
+        
+ 	<activity
+            android:name="com.tedrasoft.templategoogle.LevelChooserActivity"
+            android:label="@string/title_activity_level_chooser" 
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
+            />
+ 	<service android:name="com.parse.PushService" />
+<receiver android:name="com.parse.ParseBroadcastReceiver">
+  <intent-filter>
+    <action android:name="android.intent.action.BOOT_COMPLETED" />
+    <action android:name="android.intent.action.USER_PRESENT" />
+  </intent-filter>
+</receiver>
+<receiver android:name="com.parse.GcmBroadcastReceiver"
+    android:permission="com.google.android.c2dm.permission.SEND">
+  <intent-filter>
+    <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+    <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+ 
+    <!--
+      IMPORTANT: Change "com.parse.tutorials.pushnotifications" to match your app's package name.
+    -->
+    <category android:name="com.tedrasoft.templategoogle" />
+  </intent-filter>
+</receiver>
+<receiver
+        android:name="com.tedrasoft.templategoogle.Receiver"
+        android:exported="false" >
+    <intent-filter>
+        <action android:name="com.parse.push.intent.RECEIVE" />
+        <action android:name="com.parse.push.intent.DELETE" />
+        <action android:name="com.parse.push.intent.OPEN" />
+    </intent-filter>
+</receiver>
+    </application>
+
+</manifest>
